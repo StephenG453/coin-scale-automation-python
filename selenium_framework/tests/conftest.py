@@ -3,7 +3,7 @@ import pytest
 from selenium import webdriver
 
 
-@pytest.fixture(scope="class")
+@pytest.fixture(scope="session")
 def webdriver_setup(request):
     """
     This function sets up and tears down the webdriver after every class
@@ -14,8 +14,6 @@ def webdriver_setup(request):
     driver = webdriver.Chrome(options=options)
     driver.set_page_load_timeout(15)
     driver.maximize_window()
-
-    request.cls.driver = driver
 
     yield driver
     driver.close()
