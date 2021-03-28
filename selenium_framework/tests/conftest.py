@@ -3,10 +3,11 @@ import pytest
 from selenium import webdriver
 
 
+# TODO make sure session is the accurate scope
 @pytest.fixture(scope="session")
 def webdriver_setup(request):
     """
-    This function sets up and tears down the webdriver after every class
+    This function sets up and tears down the webdriver after every session
     """
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-ssl-errors=yes')
