@@ -46,7 +46,7 @@ class HomePage(BasePage):
             text = latest_web_element.text
 
             if '=' in text:
-                self.is_round_one_result_equal = True
+                HomePage.is_round_one_result_equal = True
 
         # round 2
         elif len(list_of_weighs):
@@ -54,19 +54,19 @@ class HomePage(BasePage):
             text = latest_web_element.text
 
             if '=' in text:
-                self.is_round_two_result_equal = True
+                HomePage.is_round_two_result_equal = True
 
     def determine_group_with_fake_weight(self):
-        if self.is_round_one_result_equal:
-            if self.is_round_two_result_equal:
-                self.is_fake_weight_in_group_one = True
+        if HomePage.is_round_one_result_equal:
+            if HomePage.is_round_two_result_equal:
+                HomePage.is_fake_weight_in_group_one = True
             else:
-                self.is_fake_weight_in_group_three = True
+                HomePage.is_fake_weight_in_group_three = True
         else:
-            if self.is_round_two_result_equal:
-                self.is_fake_weight_in_group_two = True
+            if HomePage.is_round_two_result_equal:
+                HomePage.is_fake_weight_in_group_two = True
             else:
-                self.is_fake_weight_in_group_one = True
+                HomePage.is_fake_weight_in_group_one = True
 
     def clear_grid(self, grid: str):
         if grid != 'r' and grid != 'l':

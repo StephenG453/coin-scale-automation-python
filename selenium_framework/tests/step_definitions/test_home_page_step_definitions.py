@@ -77,4 +77,29 @@ def clear_right_grid(webdriver_setup):
     home_page = HomePage(webdriver_setup)
     home_page.clear_grid('r')
 
-    time.sleep(3)
+
+@when('coin 6 is added to first cell in the right grid')
+def input_coin_six_into_right_grid(webdriver_setup):
+    home_page = HomePage(webdriver_setup)
+    home_page.insert_coin_into_right_grid(coin=6, cell=0)
+
+
+@when('coin 7 is added to second cell in the right grid')
+def input_coin_seven_into_right_grid(webdriver_setup):
+    home_page = HomePage(webdriver_setup)
+    home_page.insert_coin_into_right_grid(coin=7, cell=1)
+
+
+@when('coin 8 is added to third cell in the right grid')
+def input_coin_eight_into_right_grid(webdriver_setup):
+    home_page = HomePage(webdriver_setup)
+    home_page.insert_coin_into_right_grid(coin=8, cell=2)
+
+
+@when('group with fake weight is determined')
+def determine_group_with_fake_weight(webdriver_setup):
+    home_page = HomePage(webdriver_setup)
+    home_page.determine_group_with_fake_weight()
+
+
+    # time.sleep(10)
