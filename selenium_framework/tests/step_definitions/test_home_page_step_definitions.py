@@ -61,8 +61,20 @@ def input_coin_three_into_right_grid(webdriver_setup):
 
 
 @when('weigh button is pressed')
-def press_weight_button(webdriver_setup):
+def press_weigh_button(webdriver_setup):
     home_page = HomePage(webdriver_setup)
     home_page.press_weigh_button()
 
-    time.sleep(2)
+
+@when('latest weight result is checked')
+def check_latest_weigh_result(webdriver_setup):
+    home_page = HomePage(webdriver_setup)
+    home_page.check_latest_weigh_results()
+
+
+@when('right grid is cleared')
+def clear_right_grid(webdriver_setup):
+    home_page = HomePage(webdriver_setup)
+    home_page.clear_grid('r')
+
+    time.sleep(3)
