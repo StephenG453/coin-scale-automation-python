@@ -17,4 +17,4 @@ Feature: locating a fake weight inside the React App
       When weigh button is pressed
       When latest weight result is checked
       When group with fake weight is determined
-#      Then fake weight is found
+      Then fake weight is found

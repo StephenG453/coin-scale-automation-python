@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 from selenium_framework.pages.base_page import BasePage
-from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.keys import Keys
 
 
@@ -56,7 +55,8 @@ class HomePage(BasePage):
             if '=' in text:
                 HomePage.is_round_two_result_equal = True
 
-    def determine_group_with_fake_weight(self):
+    @staticmethod
+    def determine_group_with_fake_weight():
         if HomePage.is_round_one_result_equal:
             if HomePage.is_round_two_result_equal:
                 HomePage.is_fake_weight_in_group_one = True
@@ -67,6 +67,47 @@ class HomePage(BasePage):
                 HomePage.is_fake_weight_in_group_two = True
             else:
                 HomePage.is_fake_weight_in_group_one = True
+
+    def locate_fake_weight_within_group(self):
+        n = 3
+        if HomePage.is_fake_weight_in_group_one:
+            for weight in range(n):
+                self.driver.find_element_by_id('coin_' + str(weight)).click()
+
+                alert = self.driver.switch_to.alert
+                print("alert text is: " + alert.text)
+
+                if 'Yay!' in alert.text:
+                    print('fake weight is coin ' + str(weight))
+                    alert.accept()
+                    break
+                alert.accept()
+        elif HomePage.is_fake_weight_in_group_two:
+            n = 6
+            for weight in range(3, n):
+                self.driver.find_element_by_id('coin_' + str(weight)).click()
+
+                alert = self.driver.switch_to.alert
+                print("alert text is: " + alert.text)
+
+                if 'Yay!' in alert.text:
+                    print('fake weight is coin ' + str(weight))
+                    alert.accept()
+                    break
+                alert.accept()
+        else:
+            n = 9
+            for weight in range(6, n):
+                self.driver.find_element_by_id('coin_' + str(weight)).click()
+
+                alert = self.driver.switch_to.alert
+                print("alert text is: " + alert.text)
+
+                if 'Yay!' in alert.text:
+                    print('fake weight is coin ' + str(weight))
+                    alert.accept()
+                    break
+                alert.accept()
 
     def clear_grid(self, grid: str):
         if grid != 'r' and grid != 'l':

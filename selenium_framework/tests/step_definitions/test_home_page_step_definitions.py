@@ -102,4 +102,9 @@ def determine_group_with_fake_weight(webdriver_setup):
     home_page.determine_group_with_fake_weight()
 
 
+@then('fake weight is found')
+def locate_fake_weight(webdriver_setup):
+    home_page = HomePage(webdriver_setup)
+    home_page.locate_fake_weight_within_group()
+
     # time.sleep(10)
