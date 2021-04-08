@@ -29,7 +29,6 @@ def initialize_driver_and_open_react_app(context):
     # time.sleep(10)
 
 
-# TODO parameterize gherkin steps
 @when('user adds coin {int1} into cell {int2} in the {str} grid')
 def insert_coin_into_cell_in_grid(context, int1, int2, str):
     driver = context.browser
@@ -38,42 +37,6 @@ def insert_coin_into_cell_in_grid(context, int1, int2, str):
         home_page.insert_coin_into_left_grid(coin=int1, cell=int2)
     elif 'right' in str:
         home_page.insert_coin_into_right_grid(coin=int1, cell=int2)
-
-
-@when('user adds coin 0 to first cell in the left grid')
-def input_coin_zero_into_left_grid(webdriver_setup):
-    home_page = HomePage(webdriver_setup)
-    home_page.insert_coin_into_left_grid(coin=0, cell=0)
-
-
-@when('user adds coin 1 to second cell in the left grid')
-def input_coin_one_into_left_grid(webdriver_setup):
-    home_page = HomePage(webdriver_setup)
-    home_page.insert_coin_into_left_grid(coin=1, cell=1)
-
-
-@when('user adds coin 2 to third cell in the left grid')
-def input_coin_two_into_left_grid(webdriver_setup):
-    home_page = HomePage(webdriver_setup)
-    home_page.insert_coin_into_left_grid(coin=2, cell=2)
-
-
-@when('user adds coin 3 to first cell in the right grid')
-def input_coin_three_into_right_grid(webdriver_setup):
-    home_page = HomePage(webdriver_setup)
-    home_page.insert_coin_into_right_grid(coin=3, cell=0)
-
-
-@when('user adds coin 4 to second cell in the right grid')
-def input_coin_three_into_right_grid(webdriver_setup):
-    home_page = HomePage(webdriver_setup)
-    home_page.insert_coin_into_right_grid(coin=4, cell=1)
-
-
-@when('user adds coin 5 to third cell in the right grid')
-def input_coin_three_into_right_grid(webdriver_setup):
-    home_page = HomePage(webdriver_setup)
-    home_page.insert_coin_into_right_grid(coin=5, cell=2)
 
 
 @when('user presses weigh button')
@@ -92,24 +55,6 @@ def check_latest_weigh_result(webdriver_setup):
 def clear_right_grid(webdriver_setup):
     home_page = HomePage(webdriver_setup)
     home_page.clear_grid('r')
-
-
-@when('user adds coin 6 to first cell in the right grid')
-def input_coin_six_into_right_grid(webdriver_setup):
-    home_page = HomePage(webdriver_setup)
-    home_page.insert_coin_into_right_grid(coin=6, cell=0)
-
-
-@when('user adds coin 7 to second cell in the right grid')
-def input_coin_seven_into_right_grid(webdriver_setup):
-    home_page = HomePage(webdriver_setup)
-    home_page.insert_coin_into_right_grid(coin=7, cell=1)
-
-
-@when('user adds coin 8 to third cell in the right grid')
-def input_coin_eight_into_right_grid(webdriver_setup):
-    home_page = HomePage(webdriver_setup)
-    home_page.insert_coin_into_right_grid(coin=8, cell=2)
 
 
 @when('user determines group with fake weight')
