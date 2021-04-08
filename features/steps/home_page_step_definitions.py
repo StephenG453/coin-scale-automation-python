@@ -1,8 +1,5 @@
 # from pytest_bdd import scenarios, scenario, given, when, then
-from selenium_framework.pages.home_page import HomePage
-from selenium import webdriver
-
-import time
+from pages.home_page import HomePage
 
 from behave import *
 
