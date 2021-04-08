@@ -1,27 +1,43 @@
-from pytest_bdd import scenarios, scenario, given, when, then
+# from pytest_bdd import scenarios, scenario, given, when, then
 from selenium_framework.pages.home_page import HomePage
 from selenium import webdriver
 
 import time
 
-@scenario('../test_happy_path.feature', 'test functionality of locating a fake weight inside the React App')
-def test_app():
-    pass
+from behave import *
+from behave import use_fixture
+
+
+# @scenario('../happy_path.feature', 'test functionality of locating a fake weight inside the React App')
+# def test_app():
+#     pass
 
 
 # driver = webdriver
 # home_page = HomePage
 
 @given('React Application is loaded and home page is visible')
-def initialize_driver_and_open_react_app(webdriver_setup):
+# 2fixture(use_fixture(webdriver_setup)
+def initialize_driver_and_open_react_app(context):
     print("inside initialize_driver_and_open_react_app\n")
-    driver = webdriver_setup
+    driver = context.browser
     home_page = HomePage(driver)
     home_page.load()
 
     # print("driver current URL is:", driver.current_url, "\n")
 
     # time.sleep(10)
+
+
+# TODO parameterize gherkin steps
+@when('user adds coin {int1} into cell {int2} in the {str} grid')
+def insert_coin_into_cell_in_grid(context, int1, int2, str):
+    driver = context.browser
+    home_page = HomePage(driver)
+    if 'left' in str:
+        home_page.insert_coin_into_left_grid(coin=int1, cell=int2)
+    elif 'right' in str:
+        home_page.insert_coin_into_right_grid(coin=int1, cell=int2)
 
 
 @when('user adds coin 0 to first cell in the left grid')
