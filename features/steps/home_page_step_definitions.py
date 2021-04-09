@@ -12,7 +12,7 @@ def initialize_driver_and_open_react_app(context):
     home_page.load()
 
 
-@when('user adds coin {int1} into cell {int2} in the {str} grid')
+@step('user adds coin {int1} into cell {int2} in the {str} grid')
 def insert_coin_into_cell_in_grid(context, int1, int2, str):
     driver = context.browser
     home_page = HomePage(driver)
@@ -22,35 +22,35 @@ def insert_coin_into_cell_in_grid(context, int1, int2, str):
         home_page.insert_coin_into_right_grid(coin=int1, cell=int2)
 
 
-@when('user presses weigh button')
+@step('user presses weigh button')
 def press_weigh_button(context):
     driver = context.browser
     home_page = HomePage(driver)
     home_page.press_weigh_button()
 
 
-@when('user checks latest weight result')
+@step('user checks latest weight result')
 def check_latest_weigh_result(context):
     driver = context.browser
     home_page = HomePage(driver)
     home_page.check_latest_weigh_results()
 
 
-@when('user clears right grid')
+@step('user clears right grid')
 def clear_right_grid(context):
     driver = context.browser
     home_page = HomePage(driver)
     home_page.clear_grid('r')
 
 
-@when('user determines group with fake weight')
+@step('user determines group with fake weight')
 def determine_group_with_fake_weight(context):
     driver = context.browser
     home_page = HomePage(driver)
     home_page.determine_group_with_fake_weight()
 
 
-@then('user finds fake weight')
+@step('user finds fake weight')
 def locate_fake_weight(context):
     driver = context.browser
     home_page = HomePage(driver)
