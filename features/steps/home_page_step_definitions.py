@@ -6,7 +6,6 @@ from behave import *
 
 @given('React Application is loaded and home page is visible')
 def initialize_driver_and_open_react_app(context):
-    print("inside initialize_driver_and_open_react_app\n")
     driver = context.browser
     home_page = HomePage(driver)
     home_page.load()
@@ -20,6 +19,18 @@ def insert_coin_into_cell_in_grid(context, int1, int2, str):
         home_page.insert_coin_into_left_grid(coin=int1, cell=int2)
     elif 'right' in str:
         home_page.insert_coin_into_right_grid(coin=int1, cell=int2)
+
+
+@step('user adds a coin into a cell in a grid')
+def insert_coin_into_cell_in_grid(context):
+    driver = context.browser
+    home_page = HomePage(driver)
+
+    for row in context.table:
+        if 'left' in row['grid']:
+            home_page.insert_coin_into_left_grid(coin=row['coin'], cell=row['cell'])
+        elif 'right' in row['grid']:
+            home_page.insert_coin_into_right_grid(coin=row['coin'], cell=row['cell'])
 
 
 @step('user presses weigh button')

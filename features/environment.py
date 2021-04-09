@@ -2,7 +2,6 @@ from selenium import webdriver
 
 
 def before_all(context):
-    print("inside before_all\n")
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-ssl-errors=yes')
     options.add_argument('--ignore-certificate-errors')
@@ -15,5 +14,4 @@ def before_all(context):
 
 
 def after_all(context):
-    print("inside after_all\n")
     context.browser.quit()
